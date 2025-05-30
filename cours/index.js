@@ -206,3 +206,87 @@ arrayNumber.push("Coucou");
 // `
 //   )
 //   .join("");
+
+//------------------------------
+// Les Dates ;
+//-------------------------------
+
+// Date Classique ;
+let date = new Date();
+
+// Timestamp ;
+let timestamp = Date.parse(date);
+
+//IsoString ;
+let iso = date.toISOString();
+// console.log(date.toISOString());
+
+function dateParser(chaine) {
+  let newDate = new Date(chaine).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  return newDate;
+}
+
+// console.log(dateParser(date));
+// console.log(dateParser(timestamp));
+// console.log(dateParser(iso));
+
+//------------------------------
+// Le Destructuring ;
+//-------------------------------
+
+let moreData = {
+  destVar: ["Element 1", "Element 2"],
+};
+const { destVar } = moreData;
+// console.log(destVar);
+
+let array5 = [70, 80, 90];
+let [x, y, z] = array5;
+// console.log(x);
+// console.log(y);
+// console.log(z);
+
+const dateDest = (chaine) => {
+  let newDate = chaine.split("T")[0];
+  let [y, m, d] = newDate.split("-");
+  return [d, m, y].join("/");
+};
+
+// console.log(dateDest(iso));
+
+//------------------------------
+// Les Datasets ;
+//-------------------------------
+
+const h3js = document.getElementById("javascript");
+// console.log(h3js.dataset.lang);
+
+const h3 = document.querySelectorAll("h3");
+// h3.forEach((language) => console.log(language.dataset.lang));
+
+//------------------------------
+// Les Regex ;
+//-------------------------------
+let mail = "zaza26@gmail.com";
+// console.log(mail.search(/jjkfkjsdkjfhjk/));
+// console.log(mail.replace(/zaza/, "caca"));
+// console.log(mail.match(/ZaZa/i));
+// console.log(mail.match(/[123]/));
+
+//permet de matcher tous les chiffres :
+// console.log(mail.match(/\d/));
+//permet de matcher toutes les lettres :
+// console.log(mail.match(/[a-z]/));
+
+//contrôler un mail :
+// console.log(mail.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i));
+
+//permet de séparer les nombres :
+let separator = 21345564654;
+// console.log(separator.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
